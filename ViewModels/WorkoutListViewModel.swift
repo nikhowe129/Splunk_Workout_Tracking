@@ -61,7 +61,7 @@ class WorkoutListViewModel: ObservableObject {
     func addWorkout(date: Date, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
         print(date)
         let newWorkout = WorkoutModel(date: date, muscleGroup: muscleGroup, workoutDesc: workoutDesc, exercises: exercises)
-        workouts.insert(newWorkout, at: 0)
+        workouts.insert(newWorkout, at: 0 )
     }
     
     func updateWorkout(workout: WorkoutModel) {
@@ -90,6 +90,14 @@ class WorkoutListViewModel: ObservableObject {
 
                 workouts[workoutIndex].exercises[exerciseIndex] = exercise.updateExercise()
             }
+        }
+    }
+    
+    func convertWorkoutToJSON() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        if let data = try? encoder.encode(workouts) {
+            print(String(data: data, encoding: .utf8)!)
         }
     }
     
