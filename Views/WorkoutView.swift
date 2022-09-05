@@ -28,7 +28,7 @@ struct WorkoutView: View {
     var body: some View {
             List {
                 ForEach(workoutExercises) { exercise in
-                    ExerciseRowView(exercise: exercise, workoutID: workout.id)
+                    ExerciseRowView(exercise: exercise, workoutID: workout.id, workoutMuscleGroup: workout.muscleGroup)
                 }
             }
             .listStyle(PlainListStyle())

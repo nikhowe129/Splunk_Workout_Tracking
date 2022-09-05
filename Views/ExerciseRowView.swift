@@ -12,6 +12,7 @@ struct ExerciseRowView: View {
     @State var isRowTapped: Bool = false
     let exercise: ExerciseModel
     let workoutID: String
+    let workoutMuscleGroup: String
     
     var body: some View {
         ScrollView {
@@ -43,7 +44,7 @@ struct ExerciseRowView: View {
                     }
                     .padding(.vertical, 7.0)
                     Spacer()
-                    NavigationLink("", destination: EditWorkoutExercise(exercise: exercise, workoutID: workoutID), isActive: $isRowTapped)
+                    NavigationLink("", destination: EditWorkoutExercise(exercise: exercise, workoutID: workoutID, workoutMuscleGroup: workoutMuscleGroup), isActive: $isRowTapped)
                 }
                 .onTapGesture{
                     isRowTapped.toggle()
@@ -60,7 +61,7 @@ struct ExerciseRowView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            ExerciseRowView(exercise: exercise1, workoutID: "0")
+            ExerciseRowView(exercise: exercise1, workoutID: "0", workoutMuscleGroup: "Chest")
 //            ExerciseRowView(exercise: exercise2, workoutID: "1")
         }
     }

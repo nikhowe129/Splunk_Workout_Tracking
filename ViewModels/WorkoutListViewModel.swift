@@ -61,7 +61,7 @@ class WorkoutListViewModel: ObservableObject {
     func addWorkout(date: Date, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
         print(date)
         let newWorkout = WorkoutModel(date: date, muscleGroup: muscleGroup, workoutDesc: workoutDesc, exercises: exercises)
-        workouts.append(newWorkout)
+        workouts.insert(newWorkout, at: 0)
     }
     
     func updateWorkout(workout: WorkoutModel) {
