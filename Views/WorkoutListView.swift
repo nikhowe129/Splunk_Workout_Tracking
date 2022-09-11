@@ -32,7 +32,7 @@ struct WorkoutListView: View {
                 })
                 .padding(.top, 15.0)
             }
-            Button(action: workoutListViewModel.convertWorkoutToJSON, label: {
+            Button(action: workoutListViewModel.pushToSplunk, label: {
                 Text("testing".uppercased())
                     .foregroundColor(.white)
                     .font(.headline)

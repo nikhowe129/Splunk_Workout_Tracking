@@ -16,6 +16,7 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     let workoutsKey: String = "workout_list"
+    let HEC_token: String = "85576b4a-f741-47ad-a2f4-9c315831122a"
     
     init() {
         getWorkouts()
@@ -96,9 +97,40 @@ class WorkoutListViewModel: ObservableObject {
     func convertWorkoutToJSON() {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        if let data = try? encoder.encode(workouts) {
-            print(String(data: data, encoding: .utf8)!)
+//        if let data = try? encoder.encode(workouts) {
+//            pushToSplunk(JSON: String(data: data, encoding: .utf8)!)}
+    }
+        
+    
+    func pushToSplunk() {
+        print("reached")
+        guard let JSONEncoded = try? JSONEncoder().encode(workouts) else {
+            print("Failed to Encode")
+            return
         }
+        
+        let url = URL(string: "http://localhost:8000/services/collector/raw")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("85576b4a-f741-47ad-a2f4-9c315831122a", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "POST"
+        request.httpBody = JSONEncoded
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+            print("Reponse: \(response)")
+            guard let data = data else {return}
+            
+//            do {
+//                let workoutModel = try JSONDecoder().decode(WorkoutModel.self, from: data)
+//            } catch let jsonErr {
+//                print(jsonErr)
+//            }
+        }
+        task.resume()
     }
     
     func saveWorkouts() {
