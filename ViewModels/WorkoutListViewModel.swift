@@ -60,7 +60,6 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     func addWorkout(date: Date, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
-        print(date)
         let newWorkout = WorkoutModel(date: date, muscleGroup: muscleGroup, workoutDesc: workoutDesc, exercises: exercises)
         workouts.insert(newWorkout, at: 0 )
     }
@@ -103,16 +102,15 @@ class WorkoutListViewModel: ObservableObject {
         
     
     func pushToSplunk() {
-        print("reached")
         guard let JSONEncoded = try? JSONEncoder().encode(workouts) else {
             print("Failed to Encode")
             return
         }
         
-        let url = URL(string: "http://localhost:8000/services/collector/raw")!
+        let url = URL(string: "http://localhost:8088/services/collector/raw")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("85576b4a-f741-47ad-a2f4-9c315831122a", forHTTPHeaderField: "Authorization")
+        request.setValue("Splunk 8122cdb5-47d1-4c37-ae4d-acda2c935b0d", forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         request.httpBody = JSONEncoded
         
