@@ -43,7 +43,7 @@ struct WorkoutListView: View {
             })
         }
         .listStyle(PlainListStyle())
-        .navigationTitle("Workout List 🏋️")
+        .navigationTitle("Workouts 🏋️")
         .navigationBarItems(
             leading: EditButton(),
             trailing:

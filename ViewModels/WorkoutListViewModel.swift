@@ -23,26 +23,6 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     func getWorkouts() {
-//        let newWorkouts: [WorkoutModel] = [
-//            WorkoutModel(date: Date(),
-//                         muscleGroup: "Shoulder Day",
-//                         workoutDesc: "Good energy, broke PB on bench",
-//                         exercises: [
-//                            ExerciseModel(exercise: "Bench Press", sets: "3", reps: "10", weight: "80"),
-//                            ExerciseModel(exercise: "Incline Press", sets: "3", reps: "10", weight: "27.5"),
-//                            ExerciseModel(exercise: "Dumbell Fly", sets: "3", reps: "12", weight: "12.5")
-//                         ]
-//            ),
-//            WorkoutModel(date: Date(),
-//                         muscleGroup: "Leg Day",
-//                         workoutDesc: "Average energy, did the needful",
-//                         exercises: [
-//                            ExerciseModel(exercise: "Leg Press", sets: "3", reps: "10", weight: "120"),
-//                            ExerciseModel(exercise: "Bicep Curl", sets: "3", reps: "10", weight: "14"),
-//                         ]
-//         )
-//        ]
-//        workouts.append(contentsOf: newWorkouts)
         guard
             let data = UserDefaults.standard.data(forKey: workoutsKey),
             let savedWorkouts = try? JSONDecoder().decode([WorkoutModel].self, from: data)

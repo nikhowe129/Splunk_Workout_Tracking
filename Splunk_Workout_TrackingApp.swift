@@ -16,11 +16,19 @@ struct Splunk_Workout_TrackingApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-//                ListView()
-                WorkoutListView()
-                
+            TabView {
+                NavigationView {
+                    WorkoutListView()
+                }
+                .tabItem {
+                    Text("Workouts")
+                }
+                SettingsView()
+                    .tabItem{
+                        Text("Settings")
+                    }
             }
+
             .environmentObject(workoutListViewModel)
         }
     }
