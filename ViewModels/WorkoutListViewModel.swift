@@ -93,7 +93,7 @@ class WorkoutListViewModel: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Splunk " +
                          (userDefaults.string(forKey: "HECToken") ?? ""),
-//                         " 8122cdb5-47d1-4c37-ae4d-acda2c935b0d",
+//                         "HEC TOKEN",
                          forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         request.httpBody = JSONEncoded
