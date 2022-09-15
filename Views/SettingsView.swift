@@ -6,14 +6,21 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct SettingsView: View {
     
-    @State var workoutDescTextField: String = ""
+    let userDefaults = UserDefaults.standard
+    
+    @State var HECToken: String = ""
+    
+    init() {
+        self._HECToken = State(initialValue: userDefaults.string(forKey: "HECToken") ?? "")
+    }
     
     var body: some View {
         VStack {
-            TextField("Splunk HEC Token", text: $workoutDescTextField)
+            TextField("Splunk HEC Token", text: $HECToken)
                 .padding(.horizontal)
                 .frame(height: 55)
                 .background(Color(hue: 0.68, saturation: 0.0, brightness: 0.921, opacity: 0.865))
@@ -35,7 +42,7 @@ struct SettingsView: View {
     }
     
     func saveButtonPressed() {
-
+        userDefaults.set(HECToken, forKey: "HECToken")
     }
 }
 

@@ -21,7 +21,7 @@ struct WorkoutListView: View {
             .onMove(perform: workoutListViewModel.moveWorkout)
             
             if workoutListViewModel.workouts.count > 0 {
-                Button(action: pushToSplunkButtonPressed, label: {
+                Button(action: workoutListViewModel.pushToSplunk, label: {
                     Text("Push to Splunk".uppercased())
                         .foregroundColor(.white)
                         .font(.headline)
@@ -32,15 +32,6 @@ struct WorkoutListView: View {
                 })
                 .padding(.top, 15.0)
             }
-            Button(action: workoutListViewModel.pushToSplunk, label: {
-                Text("testing".uppercased())
-                    .foregroundColor(.white)
-                    .font(.headline)
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.accentColor)
-                    .cornerRadius(10)
-            })
         }
         .listStyle(PlainListStyle())
         .navigationTitle("Workouts 🏋️")
@@ -49,10 +40,6 @@ struct WorkoutListView: View {
             trailing:
                 NavigationLink("Add", destination: AddWorkout())
         )
-    }
-    
-    func pushToSplunkButtonPressed() {
-        print("pressed")
     }
 }
 

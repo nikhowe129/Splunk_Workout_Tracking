@@ -9,6 +9,8 @@ import Foundation
 
 class WorkoutListViewModel: ObservableObject {
     
+    let userDefaults = UserDefaults.standard
+    
     @Published var workouts: [WorkoutModel] = [] {
         didSet {
             saveWorkouts()
@@ -16,7 +18,6 @@ class WorkoutListViewModel: ObservableObject {
     }
     
     let workoutsKey: String = "workout_list"
-    let HEC_token: String = "85576b4a-f741-47ad-a2f4-9c315831122a"
     
     init() {
         getWorkouts()
@@ -90,7 +91,10 @@ class WorkoutListViewModel: ObservableObject {
         let url = URL(string: "http://localhost:8088/services/collector/raw")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Splunk 8122cdb5-47d1-4c37-ae4d-acda2c935b0d", forHTTPHeaderField: "Authorization")
+        request.setValue("Splunk " +
+                         (userDefaults.string(forKey: "HECToken") ?? ""),
+//                         " 8122cdb5-47d1-4c37-ae4d-acda2c935b0d",
+                         forHTTPHeaderField: "Authorization")
         request.httpMethod = "POST"
         request.httpBody = JSONEncoded
         
