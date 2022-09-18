@@ -25,7 +25,7 @@ struct WorkoutListRowView: View {
                             Spacer()
                         }
                         HStack {
-                            Text(workout.date, style: .date)
+                            Text(workout.date)
                                 .font(.callout)
                                 .italic()
                                 .padding(.top, 0.0)
@@ -47,7 +47,7 @@ struct WorkoutListRowView: View {
 struct WorkoutListRowView_Previews: PreviewProvider {
     
     static var workout1 = WorkoutModel(
-        date: Date(),
+        date: "01/01/2022",
         muscleGroup: "Chest Day",
         workoutDesc: "Good energy, broke PB on bench",
         exercises: [

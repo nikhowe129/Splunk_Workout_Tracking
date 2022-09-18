@@ -70,7 +70,7 @@ struct AddWorkout: View {
     }
     
     func saveButtonPressed() {
-        workoutListViewModel.addWorkout(date: workoutDateField, muscleGroup: workoutMuscleGroupPicker, workoutDesc: workoutDescTextField, exercises: workoutExercises)
+        workoutListViewModel.addWorkout(date: workoutDateField.formatted(), muscleGroup: workoutMuscleGroupPicker, workoutDesc: workoutDescTextField, exercises: workoutExercises)
         presentationMode.wrappedValue.dismiss()
     }
 }

@@ -12,7 +12,7 @@ struct WorkoutView: View {
     let workout: WorkoutModel
     @EnvironmentObject var workoutListViewModel: WorkoutListViewModel
     
-    @State var workoutDateField: Date = Date()
+    @State var workoutDateField: String = Date().formatted()
     @State var workoutMuscleGroupTextField: String = ""
     @State var workoutDescTextField: String = ""
     @State var workoutExercises: [ExerciseModel] = []
@@ -43,7 +43,7 @@ struct WorkoutView: View {
 struct WorkoutView_Previews: PreviewProvider {
     
     static var workout1 = WorkoutModel(
-        date: Date(),
+        date: Date().formatted(),
         muscleGroup: "Chest",
         workoutDesc: "Good energy, broke PB on bench",
         exercises: [

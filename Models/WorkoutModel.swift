@@ -9,12 +9,12 @@ import Foundation
 
 struct WorkoutModel: Identifiable, Codable {
     let id: String
-    let date: Date
+    let date: String
     let muscleGroup: String
     let workoutDesc: String
     var exercises: [ExerciseModel]
     
-    init(id: String = UUID().uuidString, date: Date, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
+    init(id: String = UUID().uuidString, date: String, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
         self.id = id
         self.date = date
         self.muscleGroup = muscleGroup

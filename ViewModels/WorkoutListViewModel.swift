@@ -40,7 +40,7 @@ class WorkoutListViewModel: ObservableObject {
         workouts.move(fromOffsets: from, toOffset: to)
     }
     
-    func addWorkout(date: Date, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
+    func addWorkout(date: String, muscleGroup: String, workoutDesc: String, exercises: [ExerciseModel]) {
         let newWorkout = WorkoutModel(date: date, muscleGroup: muscleGroup, workoutDesc: workoutDesc, exercises: exercises)
         workouts.insert(newWorkout, at: 0 )
     }
