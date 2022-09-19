@@ -17,6 +17,8 @@ struct AddWorkout: View {
     @State var workoutExercises: [ExerciseModel] = []
     @State var workoutMuscleGroupPicker: String = "Select Muscle Group"
     
+    let dateFormatter = DateFormatter()
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -70,7 +72,11 @@ struct AddWorkout: View {
     }
     
     func saveButtonPressed() {
-        workoutListViewModel.addWorkout(date: workoutDateField.formatted(), muscleGroup: workoutMuscleGroupPicker, workoutDesc: workoutDescTextField, exercises: workoutExercises)
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+//        dateFormatter.dateFormat = "MM/dd/yyyy"
+        workoutListViewModel.addWorkout(date:
+                                            dateFormatter.string(from: workoutDateField)
+                                            ,muscleGroup: workoutMuscleGroupPicker, workoutDesc: workoutDescTextField, exercises: workoutExercises)
         presentationMode.wrappedValue.dismiss()
     }
 }

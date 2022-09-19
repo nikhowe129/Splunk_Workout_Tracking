@@ -88,7 +88,7 @@ class WorkoutListViewModel: ObservableObject {
             return
         }
         
-        let url = URL(string: "http://localhost:8088/services/collector/raw")!
+        let url = URL(string: "http://localhost:8088/services/collector/event?auto_extract_timestamp=true")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Splunk " +
