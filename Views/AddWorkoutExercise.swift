@@ -64,6 +64,7 @@ struct AddWorkoutExercise: View {
                                 Text("Cable Lateral Raise").tag("Cable Lateral Raise")
                                 Text("Dumbell Front Raise").tag("Dumbell Front Raise")
                                 Text("Plate Front Raise").tag("Plate Front Raise")
+                                Text("Cable Face Pull").tag("Cable Face Pull")
                                 }
                         )
                         .pickerStyle(.automatic)

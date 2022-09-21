@@ -21,11 +21,11 @@ struct Splunk_Workout_TrackingApp: App {
                     WorkoutListView()
                 }
                 .tabItem {
-                    Text("Workouts")
+                    Label("Workouts", systemImage: "house.fill")
                 }
                 SettingsView()
                     .tabItem{
-                        Text("Settings")
+                        Label("Settings", systemImage: "gearshape.fill")
                     }
             }
 
